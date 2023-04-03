@@ -1,4 +1,33 @@
 #include <SFML/Graphics.hpp>
+#include <iostream>
+
+using namespace std;
+
+sf::Vector2f moveUp(sf::Vector2f vect) {
+    vect.y += 10;
+    cout << "W";
+    return vect;
+}
+
+sf::Vector2f moveDown(sf::Vector2f vect) {
+    vect.y -= 10;
+    cout << "S";
+    return vect;
+}
+
+sf::Vector2f moveLeft(sf::Vector2f vect) {
+    vect.x -= 10;
+    cout << "A";
+    return vect;
+}
+
+sf::Vector2f moveRight(sf::Vector2f vect) {
+    vect.x += 10;
+    cout << "D";
+    return vect;
+}
+
+
 
 int main()
 {
@@ -18,6 +47,7 @@ int main()
     float xVelocity = 3;
     float yVelocity = 3;
 
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -26,6 +56,16 @@ int main()
             if (event.type == sf::Event::Closed)window.close();
 
             if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)) window.close();
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) rectPosition = moveUp(rectPosition);
+            
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) rectPosition = moveDown(rectPosition);
+            
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) rectPosition = moveLeft(rectPosition);
+            
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) rectPosition = moveRight(rectPosition);
+
+
         }
 
         //physics
@@ -45,3 +85,4 @@ int main()
 
     return 0;
 }
+
