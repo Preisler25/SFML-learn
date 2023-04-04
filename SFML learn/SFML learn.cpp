@@ -37,7 +37,7 @@ int main()
     const float x_side = 100;
     const float y_side = 100;
 
-    sf::RenderWindow window(sf::VideoMode(1200, 700), "My game");
+    sf::RenderWindow window(sf::VideoMode(1200, 800), "My game");
     window.setFramerateLimit(60);
     
     sf::RectangleShape rect;
@@ -47,8 +47,8 @@ int main()
     rect.setSize(sf::Vector2f(x_side, y_side));
 
 
-    float xVelocity = 10;
-    float yVelocity = 10;
+    float xVelocity = 100;
+    float yVelocity = 100;
 
 
     while (window.isOpen())
@@ -71,13 +71,13 @@ int main()
 
         }
 
-        //physics
+        //physics       
+        if (rectPosition.x < 0 || rectPosition.x > 1200 - x_side) xVelocity *= -1;
+        if (rectPosition.y < 0 || rectPosition.y > 800 - y_side) yVelocity *= -1;
         if (rectPosition.x == 0 && rectPosition.y == 00) chColor(rect);
         if (rectPosition.x == 1200 && rectPosition.y == 00) chColor(rect);
-        if (rectPosition.x == 0 && rectPosition.y == 700) chColor(rect);
+        if (rectPosition.x == 0 && rectPosition.y == 800) chColor(rect);
         if (rectPosition.x == 1200 && rectPosition.y == 700) chColor(rect);
-        if (rectPosition.x < 0 || rectPosition.x > 1200 - x_side) xVelocity *= -1;
-        if (rectPosition.y < 0 || rectPosition.y > 700 - y_side) yVelocity *= -1;
 
         rect.setPosition(rectPosition);
 
